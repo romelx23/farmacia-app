@@ -1,0 +1,5 @@
+export * from './home/HomePage'
+export * from './pharmacy/PharmacyPage'
+export * from './pharmacy/AdminPage'
+export * from './auth/LoginPage'
+export * from './auth/RegisterPage'
