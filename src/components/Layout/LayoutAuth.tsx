@@ -5,7 +5,7 @@ interface Props {
   }
 export const LayoutAuth: FC<Props> = ({children}) => {
   return (
-    <div className="bg-blue-900 w-full h-screen">
+    <div className="bg-gray-800 w-full h-screen">
       <NavbarAuth/>
       <div className="p-4 w-full text-white">
         {children}
