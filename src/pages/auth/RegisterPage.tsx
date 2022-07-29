@@ -29,7 +29,7 @@ export const RegisterPage = () => {
             className="text-white"
           />
           <TextField
-            id="password"
+            id="password2"
             label="Contraseña"
             variant="standard"
             placeholder="Ingrese su Contraseña"
