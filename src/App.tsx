@@ -1,14 +1,14 @@
 import { ThemeProvider } from "@emotion/react";
 import { useState } from "react";
 import { HomePage } from "./pages";
-import { DashboardRoutes } from "./routes";
+import { AppRouter, DashboardRoutes } from "./routes";
 import { darkTheme } from "./theme/darkTheme";
 
 function App() {
   return (
     <div className="App">
       <ThemeProvider theme={darkTheme}>
-        <DashboardRoutes />
+        <AppRouter />
       </ThemeProvider>
     </div>
   );

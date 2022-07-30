@@ -14,7 +14,7 @@ export const Navbar = () => {
           <h1>Mi perfil</h1>
         </Link>
         <Link
-            to={"/registrate"}
+            to={"/auth/registrate"}
             className=""
             >
             <h1>Crea una cuenta</h1>
