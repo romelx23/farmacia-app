@@ -1,12 +1,15 @@
 import React from 'react'
-import { CustomDrawer } from '../../components'
-import { Layout } from '../../components/Layout'
+import { CustomDrawer, LayoutAdmin } from '../../components'
 
 export const AdminPage = () => {
   return (
-    <Layout>
-      <CustomDrawer />
-      <div className='text-white'>AdminPage</div>
-    </Layout>
+    <div>
+      <h1>Hola</h1>
+      <h1>Hola</h1>
+      <h1>Hola</h1>
+      <h1>Hola</h1>
+      <h1>Hola</h1>
+      <h1>Hola</h1>
+    </div>
   )
 }

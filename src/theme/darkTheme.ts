@@ -20,5 +20,13 @@ export const darkTheme = createTheme({
         root: {},
       },
     },
+    MuiDrawer: {
+      styleOverrides: {
+        root: {
+          backgroundColor: "#fff",
+        },
+      },
+      
+    }
   },
 });
