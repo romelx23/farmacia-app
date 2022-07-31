@@ -23,11 +23,19 @@ export const RegisterPage = () => {
     handleSubmit,
     formState: { errors },
     getValues,
+    setValue
   } = useForm<Inputs>();
   // const {name,lastname,phone,email,password}=getValues();
   const onSubmit = (data: Inputs) => {
     dispatch(authRegister(data.name,data.lastname,data.phone,data.email,data.password));
     console.log(data);
+    // limpiar el formulario
+    setValue("name","");
+    setValue("lastname","");
+    setValue("phone","");
+    setValue("email","");
+    setValue("password","");
+    setValue("passwordConfirm","");
   };
   const handleClose=()=>{
     dispatch(setError(''));

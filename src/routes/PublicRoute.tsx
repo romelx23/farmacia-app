@@ -8,7 +8,7 @@ interface Props{
 }
 
 export const PublicRoute:FC<Props> = ({children}) => {
-    const {user,token}=useAppSelector(state=>state.auth);
+    const {user}=useAppSelector(state=>state.auth);
     const {id}=user!;
     // const {user:{uid}} = useContext(AuthContext);
     return id

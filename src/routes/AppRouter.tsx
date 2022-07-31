@@ -9,10 +9,9 @@ import { PrivateRoute } from "./PrivateRoute";
 import { PublicRoute } from "./PublicRoute";
 
 export const AppRouter = () => {
-  const {loading,user,token}=useAppSelector(state=>state.auth);
+  const {loading,user}=useAppSelector(state=>state.auth);
   // const { user, startCheking, checking } = useContext(AuthContext);
   const dispatch=useAppDispatch();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
     dispatch(startChekingToken())
