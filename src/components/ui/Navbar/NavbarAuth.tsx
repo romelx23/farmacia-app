@@ -10,11 +10,11 @@ export const NavbarAuth = () => {
       <h1 className="font-bold text-xl font-mochi">Tú Farmacia</h1>
       </Link>
       <div className="flex gap-2">
-        <Link to={"/ingresar"}>
+        <Link to={"/auth/ingresar"}>
           <h1>Ingresar</h1>
         </Link>
         <Link
-            to={"/registrate"}
+            to={"/auth/registrate"}
             >
             <h1>Crea una cuenta</h1>
         </Link>

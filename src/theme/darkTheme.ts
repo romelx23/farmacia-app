@@ -1,5 +1,5 @@
+import { createTheme } from "@mui/material";
 import { blue, red } from "@mui/material/colors";
-import { createTheme } from "@mui/material/styles";
 
 export const darkTheme = createTheme({
   palette: {
@@ -20,13 +20,13 @@ export const darkTheme = createTheme({
         root: {},
       },
     },
-    MuiDrawer: {
-      styleOverrides: {
-        root: {
-          backgroundColor: "#fff",
-        },
-      },
+    // MuiDrawer: {
+    //   styleOverrides: {
+    //     root: {
+    //       backgroundColor: "#fff",
+    //     },
+    //   },
       
-    }
+    // }
   },
 });

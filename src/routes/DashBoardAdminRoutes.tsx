@@ -9,9 +9,9 @@ const DashBoardAdminRoutes = () => {
             <Route path="/inicio" element={<InventoryPage />}/>
             <Route path="/inventario" element={<InventoryPage />}/>
             <Route path="/reporte-ventas" element={<SalesPage />}/>
-            <Route path="/medicamentos-agotandose" element={<InventoryPage />}/>
-            <Route path="/registro-pedidos" element={<InventoryPage />}/>
-            <Route path="/medicamentos-vendidos" element={<InventoryPage />}/>
+            <Route path="/medicamentos-agotandose" element={<SalesPage />}/>
+            <Route path="/registro-pedidos" element={<SalesPage />}/>
+            <Route path="/medicamentos-vendidos" element={<SalesPage />}/>
         </Routes>
     </LayoutAdmin>
   )

@@ -17,6 +17,9 @@ module.exports = {
         sans: ["Inter var", "sans-serif"],
         mochi: ['Mochiy Pop One', 'sans-serif'],
       },
+      gridTemplateColumns:{
+        'small': 'repeat(auto-fit, minmax(240px, 1fr))',
+      }
     },
   },
   plugins: [],

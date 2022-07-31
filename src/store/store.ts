@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { productSlice } from './slices'
+import { productSlice,authSlice, adminSlice } from './slices'
 // import { counterSlice, pokemonSlice } from './slices'
 
 export const store = configureStore({
   reducer: {
     product:productSlice.reducer,
+    auth:authSlice.reducer,
+    admin:adminSlice.reducer,
     // counter: counterSlice.reducer,
     // pokemon: pokemonSlice.reducer,
   },

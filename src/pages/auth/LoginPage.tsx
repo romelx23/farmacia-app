@@ -1,15 +1,23 @@
 import React from "react";
 import { LayoutAuth } from "../../components";
-import { Button, Input, TextField } from "@mui/material";
+import { Alert, Button, Input, TextField } from "@mui/material";
 import { useForm } from "react-hook-form";
+import { useAppDispatch, useAppSelector } from "../../hooks";
+import { authLogin, setError } from "../../store/slices";
 interface Inputs{
   email: string;
   password: string;
 }
 export const LoginPage = () => {
+  const {error}=useAppSelector(state=>state.auth);
+  const dispatch=useAppDispatch();
   const { register,handleSubmit,formState:{errors} } = useForm<Inputs>();
   const onSubmit = (data: Inputs) => {
+    dispatch(authLogin(data.email,data.password));
     console.log(data);
+  }
+  const handleClose=()=>{
+    dispatch(setError(''));
   }
 
   return (
@@ -55,7 +63,7 @@ export const LoginPage = () => {
               id="password"
               label="Contraseña"
               variant="standard"
-              placeholder="Ingrese su Contraseña"
+              placeholder="*************"
               type="password"
               className="text-white"
               {
@@ -84,6 +92,13 @@ export const LoginPage = () => {
             >
               Ingresar
             </Button>
+            {
+                !!error && 
+                <Alert 
+                severity="error"
+                onClose={handleClose}
+                >{error}</Alert>
+              }
           </form>
         </div>
       </div>

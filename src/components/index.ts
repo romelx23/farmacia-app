@@ -11,3 +11,5 @@ export * from './ui/Drawer/AdminDrawer'
 // farmacia
 export * from './pharmacy/ListProducts'
 export * from './pharmacy/ItemProduct'
+// shared
+// export * from './shared/Modal'

@@ -185,17 +185,14 @@ export const AdminDrawer: FC<Props> = ({children}) => {
                 <List>
                     {listItem.map(({id, text, icon, path}) => (
                     <ListItem key={id} disablePadding sx={{ display: 'block' }}>
-                        <ListItemButton >
-                            <ListItemIcon sx={{minWidth: 35}}>
-                                {icon}
-                            </ListItemIcon>
-                            <Link
-                              to={path}
-                            >
-                              <ListItemText className="flex flex-wrap" primary={text} sx={{ opacity: open ? 1 : 0, display: 'inline' }}  />
-                            </Link>
-                            {/* <ListItemText className="flex flex-wrap" primary={text} sx={{ opacity: open ? 1 : 0, display: 'inline' }}  /> */}
-                        </ListItemButton>
+                        <Link to={path}>
+                          <ListItemButton>
+                                <ListItemIcon sx={{minWidth: 35}}>
+                                    {icon}
+                                </ListItemIcon>
+                                <ListItemText className="flex" primary={text} sx={{ opacity: open ? 1 : 0, display: 'inline' }}  />
+                          </ListItemButton>
+                        </Link>
                     </ListItem>
                     ))} 
                 </List>
