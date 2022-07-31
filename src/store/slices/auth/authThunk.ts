@@ -85,8 +85,8 @@ export const startChekingToken = (): ThunkAction<
           },
         }
       );
-      console.log(data);
-      console.log(data.user);
+      // console.log(data);
+      // console.log(data.user);
       const { user, access_token, refresh_token } = data;
       dispatch(setUser(user));
       dispatch(setToken({access_token,refresh_token}));
