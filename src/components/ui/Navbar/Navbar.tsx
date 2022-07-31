@@ -1,7 +1,18 @@
+import Cookies from "js-cookie";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../../hooks";
+import { logAuth } from "../../../store/slices";
 
 export const Navbar = () => {
+  const navigate=useNavigate();
+  const dispatch=useAppDispatch();
+  const handleLogout = () => {
+    Cookies.remove("access_token");
+    Cookies.remove("refresh_token");
+    navigate("/auth/ingresar");
+    dispatch(logAuth());
+  }
   return (
     <div className="flex bg-blue-500 py-2 px-3 justify-between text-white">
       <Link 
@@ -13,12 +24,12 @@ export const Navbar = () => {
         <Link to={"/mi-perfil"}>
           <h1>Mi perfil</h1>
         </Link>
-        <Link
-            to={"/auth/registrate"}
+        <button
+            onClick={handleLogout}
             className=""
             >
-            <h1>Crea una cuenta</h1>
-        </Link>
+            <h1>Salir</h1>
+        </button>
       </div>
     </div>
   );
