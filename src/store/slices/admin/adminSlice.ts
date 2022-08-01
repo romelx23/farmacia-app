@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ProductI } from "../../../interfaces";
+import { OrderI } from "../../../interfaces/orders/orders";
 
 interface IInitialState {
     products: ProductI[],
@@ -7,6 +8,8 @@ interface IInitialState {
     loading: boolean;
     error : string | null;
     message : string | null;
+    orders: OrderI[],
+    order: OrderI | null,
 }
 
 const initialState: IInitialState = {
@@ -15,6 +18,8 @@ const initialState: IInitialState = {
     loading: false,
     error: null,
     message: '',
+    orders: [],
+    order: null,
 };
 
 export const adminSlice = createSlice({
@@ -31,7 +36,8 @@ export const adminSlice = createSlice({
             state.product = action.payload
         },
         admin_resetValues: (state) => {
-            state.product = null
+            state.product = null,
+            state.order = null
         },
         admin_createProduct: (state, action: PayloadAction<ProductI>) => {
             state.products = [...state.products, action.payload]
@@ -47,7 +53,13 @@ export const adminSlice = createSlice({
         },
         admin_setMessage: (state, action: PayloadAction<string>) => {
             state.message = action.payload;
-        }
+        },
+        admin_getOrders: (state, action: PayloadAction<OrderI[]>) => {
+            state.orders = action.payload
+        },
+        admin_getOrderById: (state, action: PayloadAction<OrderI>) => {
+            state.order = action.payload
+        },
     //    aincremenByAumount:(state, action)=>{
     //        console.log(action)
     //        state.count+=action.payload
@@ -65,6 +77,9 @@ export const {
     admin_setMessage, 
     admin_resetValues,
 
+    //orders
+    admin_getOrders,
+    admin_getOrderById
 } = adminSlice.actions
 
 export default adminSlice.reducer

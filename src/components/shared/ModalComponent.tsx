@@ -4,26 +4,28 @@ import { Box, Backdrop, Fade, Button, Modal } from "@mui/material";
 // import Fade from '@mui/material/Fade';
 // import Button from '@mui/material/Button';
 
-const style = {
-  position: 'absolute' as 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: '#131313',
-  border: '2px solid #111',
-  boxShadow: 24,
-  p: 4,
-};
+
 
 interface Props {
     open: boolean;
     handleClose: () => void,
     children: React.ReactNode;
+    size?: string
 }
 
-export const ModalComponent: React.FC<Props> = ({open, handleClose, children}) => {
+export const ModalComponent: React.FC<Props> = ({open, handleClose, children, size}) => {
 
+  const style = {
+    position: 'absolute' as 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: size ? size : 400,
+    bgcolor: '#131313',
+    border: '2px solid #111',
+    boxShadow: 24,
+    p: 4,
+  };
 
     return (
         <div>

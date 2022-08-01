@@ -7,3 +7,5 @@ export * from './auth/RegisterPage'
 // Admin
 export * from './admin/InventoryPage'
 export * from './admin/SalesPage'
+export * from './admin/OrdersPage'
+export * from './admin/ScarceMedicinesPage'

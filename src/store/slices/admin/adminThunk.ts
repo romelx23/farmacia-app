@@ -2,31 +2,10 @@ import { AnyAction, ThunkAction } from "@reduxjs/toolkit";
 import moment from "moment";
 import { pharmacyApi } from "../../../api";
 import { ProductI } from "../../../interfaces";
+import { OrderI } from "../../../interfaces/orders/orders";
 import { RootState } from "../../store";
-import { admin_createProduct, admin_deleteProduct, admin_getInventaryProducts, admin_getProductId, admin_resetValues, admin_setError, admin_setMessage, admin_updateProduct } from "./adminSlice";
-
-// export const authLogin = (
-//   email: string,
-//   password: string
-// ): ThunkAction<void, RootState, unknown, AnyAction> => {
-//   return async (dispatch) => {
-//     try {
-//       dispatch(startLoadingLogin);
-//       const { data } = await pharmacyApi.post<UserI>("/auth/login", {
-//         email,
-//         password,
-//       });
-//       dispatch(setToken(data.access_token));
-//       dispatch(setUser(data.user));
-//       localStorage.setItem("token", data.access_token);
-//     } catch (error: any) {
-//       dispatch(admin_setError("Error al iniciar sesión"));
-//       throw error;
-//     }
-//   };
-// };
+import { admin_createProduct, admin_deleteProduct, admin_getInventaryProducts, admin_getOrderById, admin_getOrders, admin_getProductId, admin_resetValues, admin_setError, admin_setMessage, admin_updateProduct } from "./adminSlice";
   
-
 export const getInventaryProducts = (): ThunkAction<void, RootState, unknown, AnyAction> => {
     return async (dispatch) => {
       try {
@@ -43,6 +22,7 @@ export const createProduct = (product: any): ThunkAction<void, RootState, unknow
   return async (dispatch) => {
     try {
       const { data } = await pharmacyApi.post<ProductI>("/products", product);
+      data.expirationDate = moment(data.expirationDate).format("YYYY-MM-DD");
       dispatch(admin_createProduct(data));
       dispatch(admin_setMessage('Producto creado exitosamente.'));
     } catch (error: any) {
@@ -101,3 +81,27 @@ export const resetProduct = (): ThunkAction<void, RootState, unknown, AnyAction>
   };
 };
   
+
+export const getOrders = (): ThunkAction<void, RootState, unknown, AnyAction> => {
+  return async (dispatch) => {
+    try {
+      const { data } = await pharmacyApi.get<OrderI[]>("/orders");
+      dispatch(admin_getOrders(data));
+    } catch (error: any) {
+      dispatch(admin_setError("Hubo un error al cargar los productos."));
+      throw error;
+    }
+  };
+};
+
+export const getOrderById = (id: number): ThunkAction<void, RootState, unknown, AnyAction> => {
+  return async (dispatch) => {
+    try {
+      const { data } = await pharmacyApi.get<OrderI>(`/orders/${id}`);
+      dispatch(admin_getOrderById(data));
+    } catch (error: any) {
+      dispatch(admin_setError("Hubo al error al obtener la orden."));
+      throw error;
+    }
+  };
+};
