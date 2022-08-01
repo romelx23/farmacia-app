@@ -11,7 +11,7 @@ interface IInitialState {
 
 const initialState: IInitialState = {
     products: [] as ProductI[],
-    product: {} as ProductI,
+    product: null,
     loading: false,
     error: null,
     message: '',
@@ -27,11 +27,17 @@ export const adminSlice = createSlice({
         admin_getInventaryProducts: (state, action: PayloadAction<ProductI[]>) => {
             state.products = action.payload
         },
-        admin_createProduct: (state, action: PayloadAction<ProductI>) => {
+        admin_getProductId: (state, action: PayloadAction<ProductI>) => {
             state.product = action.payload
         },
+        admin_resetValues: (state) => {
+            state.product = null
+        },
+        admin_createProduct: (state, action: PayloadAction<ProductI>) => {
+            state.products = [...state.products, action.payload]
+        },
         admin_deleteProduct: (state, action: PayloadAction<ProductI>) => {
-            state.products = state.products.filter(product => product.id !== action.payload.id)
+            state.products = state.products.filter(product => product.name !== action.payload.name)
         },
         admin_updateProduct: (state, action: PayloadAction<ProductI>) => {
             state.products = state.products.map(product => product.id === action.payload.id ? action.payload : product)
@@ -51,11 +57,13 @@ export const adminSlice = createSlice({
 
 export const {
     admin_getInventaryProducts, 
+    admin_getProductId,
     admin_createProduct,
     admin_deleteProduct,
     admin_updateProduct,
     admin_setError, 
     admin_setMessage, 
+    admin_resetValues,
 
 } = adminSlice.actions
 

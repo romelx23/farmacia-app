@@ -1,8 +1,9 @@
 import { AnyAction, ThunkAction } from "@reduxjs/toolkit";
+import moment from "moment";
 import { pharmacyApi } from "../../../api";
 import { ProductI } from "../../../interfaces";
 import { RootState } from "../../store";
-import { admin_createProduct, admin_deleteProduct, admin_getInventaryProducts, admin_setError, admin_setMessage, admin_updateProduct } from "./adminSlice";
+import { admin_createProduct, admin_deleteProduct, admin_getInventaryProducts, admin_getProductId, admin_resetValues, admin_setError, admin_setMessage, admin_updateProduct } from "./adminSlice";
 
 // export const authLogin = (
 //   email: string,
@@ -64,14 +65,37 @@ export const deleteProduct = (id: number): ThunkAction<void, RootState, unknown,
   };
 };
 
-export const updateProduct = (product: ProductI): ThunkAction<void, RootState, unknown, AnyAction> => {
+export const getProductById = (id: number): ThunkAction<void, RootState, unknown, AnyAction> => {
   return async (dispatch) => {
     try {
-      const { data } = await pharmacyApi.put<ProductI>(`/products/${product.id}`, product);
+      const { data } = await pharmacyApi.get<ProductI>(`/products/${id}`);
+      dispatch(admin_getProductId(data));
+    } catch (error: any) {
+      dispatch(admin_setError("Hubo al error al obtener el producto."));
+      throw error;
+    }
+  };
+};
+
+export const updateProduct = (product: any, id: number): ThunkAction<void, RootState, unknown, AnyAction> => {
+  return async (dispatch) => {
+    try {
+      const { data } = await pharmacyApi.put<ProductI>(`/products/${id}`, product);
+      data.expirationDate = moment(data.expirationDate).format("YYYY-MM-DD");
       dispatch(admin_updateProduct(data));
       dispatch(admin_setMessage('Producto actualizado exitosamente.'));
     } catch (error: any) {
       dispatch(admin_setError("Hubo al error al actualizar el producto."));
+      throw error;
+    }
+  };
+};
+
+export const resetProduct = (): ThunkAction<void, RootState, unknown, AnyAction> => {
+  return async (dispatch) => {
+    try {
+      dispatch(admin_resetValues());
+    } catch (error: any) {
       throw error;
     }
   };

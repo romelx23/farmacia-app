@@ -5,7 +5,7 @@ export interface ProductI {
     price:          number;
     stock:          number;
     image:          string;
-    expirationDate: Date;
+    expirationDate: Date | string;
     pharmacy:       ProductPharmacy;
     createAt?:       Date;
     updateAt?:       Date;
