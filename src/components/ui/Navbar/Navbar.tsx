@@ -21,7 +21,7 @@ export const Navbar = () => {
       <h1 className="font-bold text-xl font-mochi">Tú Farmacia</h1>
       </Link>
       <div className="flex gap-2">
-        <Link to={"/administracion"}>
+        <Link to={"/administracion/inicio"}>
           <h1>Administración</h1>
         </Link>
         <button

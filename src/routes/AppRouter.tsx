@@ -12,35 +12,29 @@ export const AppRouter = () => {
   const {loading,user}=useAppSelector(state=>state.auth);
   // const { user, startCheking, checking } = useContext(AuthContext);
   const dispatch=useAppDispatch();
-
+  
   useEffect(() => {
     dispatch(startChekingToken())
-    console.log("startCheking");
   }, [user?.email]);
-
-  if (loading) {
-    return (
-      <div
-      className="loader-page"
-      >
-        <h1
-          className="
-          text-white
-           font-bold
-            text-3xl
-            "
-        >
-          Espere....
-        </h1>
-        <div 
-        className="
-        animate-spin
-        w-12 h-12 border-2 border-r-transparent border-purple-500
-        "
-        ></div>
-      </div>
-    );
-  }
+  
+  // if (loading) {
+  //   console.log('Estamos dentro de loading')
+  //   return (
+  //     <div className="loader-page flex flex-col justify-center items-center gap-y-3">
+  //       <h1
+  //         className="text-white font-bold text-3xl"
+  //       >
+  //         Cargando
+  //       </h1>
+  //       <div 
+  //       className="
+  //       animate-spin
+  //       w-12 h-12 border-2 border-r-transparent border-purple-500 rounded-full
+  //       "
+  //       ></div>
+  //     </div>
+  //   );
+  // }
 
   return (
     <BrowserRouter>

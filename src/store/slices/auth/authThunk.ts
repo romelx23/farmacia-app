@@ -17,7 +17,7 @@ export const authLogin = (
 ): ThunkAction<void, RootState, unknown, AnyAction> => {
   return async (dispatch) => {
     try {
-      dispatch(startLoadingLogin);
+      dispatch(startLoadingLogin(true));
       const { data } = await pharmacyApi.post<UserI>("/auth/login", {
         email,
         password,
@@ -27,6 +27,7 @@ export const authLogin = (
       dispatch(setUser(user));
       Cookies.set('access_token', access_token);
       Cookies.set('refresh_token', refresh_token);
+      dispatch(startLoadingLogin(false));
       // localStorage.setItem("access_token", access_token);
       // localStorage.setItem("refresh_token", refresh_token);
     } catch (error: any) {
@@ -45,7 +46,7 @@ export const authRegister = (
 ): ThunkAction<void, RootState, unknown, AnyAction> => {
   return async (dispatch) => {
     try {
-      dispatch(startLoadingLogin);
+      dispatch(startLoadingLogin(true));
       const { data } = await pharmacyApi.post<RegisterResponse>("/users", {
         name,
         lastname,
@@ -53,6 +54,7 @@ export const authRegister = (
         email,
         password,
       });
+      dispatch(startLoadingLogin(false));
       dispatch(setMessage("Se ha registrado correctamente"));
     } catch (error: any) {
       dispatch(setError("Error al registrarse"));
@@ -69,6 +71,7 @@ export const startChekingToken = (): ThunkAction<
 > => {
   return async (dispatch) => {
     try {
+      dispatch(startLoadingLogin(true));
       const access_token1 = Cookies.get('access_token');
       const refresh_token1 = Cookies.get('refresh_token');
       const { data } = await pharmacyApi.post<UserI>(
@@ -92,6 +95,7 @@ export const startChekingToken = (): ThunkAction<
       dispatch(setToken({access_token,refresh_token}));
       Cookies.set('access_token', access_token);
       Cookies.set('refresh_token', refresh_token);
+      dispatch(startLoadingLogin(false));
       // localStorage.setItem("access_token", access_token);
       // localStorage.setItem("refresh_token", refresh_token);
     } catch (error: any) {
