@@ -12,6 +12,6 @@ export const PublicRoute:FC<Props> = ({children}) => {
     const {id}=user!;
     // const {user:{uid}} = useContext(AuthContext);
     return id
-    ? <Navigate to="/"/>
+    ? <Navigate to="/administracion/inicio"/>
     :children
 }

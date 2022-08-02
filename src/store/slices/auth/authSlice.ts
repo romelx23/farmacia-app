@@ -26,8 +26,8 @@ export const authSlice = createSlice({
   initialState,
   reducers: {
     // aqui defines las actions
-    startLoadingLogin: (state) => {
-      state.loading = true;
+    startLoadingLogin: (state, action: PayloadAction<boolean>) => {
+      state.loading = action.payload;
     },
     setUser: (state, action: PayloadAction<User>) => {
       state.user = action.payload;
@@ -44,6 +44,7 @@ export const authSlice = createSlice({
     },
     logAuth: (state) => {
       state.user = {} as User;
+      state.loading = false
     }
   },
 });

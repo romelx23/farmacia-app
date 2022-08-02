@@ -46,9 +46,9 @@ const listItem = [
   },
   {
     id: '6',
-    text: 'Medicamentos Vendidos',
+    text: 'Medicamentos Expirados',
     icon: <HomeOutlinedIcon />,
-    path: '/administracion/medicamentos-vendidos'
+    path: '/administracion/medicamentos-expirados'
   },
 ]
 
@@ -162,15 +162,15 @@ export const AdminDrawer: FC<Props> = ({children}) => {
                         <h1 className="font-bold text-xl font-mochi">Tú Farmacia</h1>
                     </Link>
                     <div className="flex gap-2">
-                        <Link to={"/administracion"}>
+                        <Link to={"/administracion/inicio"}>
                         <h1>Administración</h1>
                         </Link>
-                        <Link
+                        {/* <Link
                             to={"/registrate"}
                             className=""
                             >
                             <h1>Crea una cuenta</h1>
-                        </Link>
+                        </Link> */}
                     </div>
                 </div>
                 </Toolbar>
