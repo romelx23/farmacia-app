@@ -50,9 +50,7 @@ export const options2 = {
       display: true,
       text: 'Grafica de Productos con bajo y normal Stock',
     },
-    
   },
-  
 };
 
 const labels = ['Expirados', 'No Expirados'];

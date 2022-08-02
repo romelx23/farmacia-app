@@ -95,6 +95,11 @@ export const InventoryPage = () => {
     onHide()
   }
 
+  const inputProps = {
+    step: '2',
+  };
+  
+
   return (
     <div>
       <h1 className='text-center text-xl font-semibold mt-1'>Inventario de Productos</h1>
@@ -198,12 +203,15 @@ export const InventoryPage = () => {
               }}
               fullWidth
             />
-
+            
             <TextField
               id="price"
               label="Precio"
             //   variant="standard"
               placeholder="Ingrese Precio"
+              inputProps={{
+                step: 0.01,
+              }}
               type="number"
               className="text-white"
               {

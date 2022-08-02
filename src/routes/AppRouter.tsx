@@ -1,6 +1,6 @@
 // import { getAuth, onAuthStateChanged } from "firebase/auth";
 import React, { useEffect, useState } from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, HashRouter, Routes, Route } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import { startChekingToken } from "../store/slices";
 import { DashboardPrivate } from "./DashboardPrivate";
@@ -37,7 +37,7 @@ export const AppRouter = () => {
   // }
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route
           path="/auth/*"
@@ -56,6 +56,6 @@ export const AppRouter = () => {
           }
         />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
