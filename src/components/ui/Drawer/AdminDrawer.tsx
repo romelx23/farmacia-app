@@ -159,7 +159,7 @@ export const AdminDrawer: FC<Props> = ({children}) => {
                     <Link 
                         to="/"
                     >
-                        <h1 className="font-bold text-xl font-mochi">Tú Farmacia</h1>
+                        <h1 className="font-bold text-xl font-mochi">Tu Farmacia</h1>
                     </Link>
                     <div className="flex gap-2">
                         <Link to={"/administracion/inicio"}>
